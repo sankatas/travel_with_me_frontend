@@ -1,8 +1,12 @@
-import React from 'react';
-import { URL } from "../src/Utils/Url";
-
+import RootStack from "./Routes/RootStack";
+ 
 function App() {
-  return URL;
+  return (
+  <div>
+<RootStack />
+  </div>
+  )
+  
 }
 
 export default App;
