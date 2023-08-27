@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { URL } from "../../Utils/Url";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import home1 from '../../Assets/home1.jpg';
+import "./Login.css"
 
 export default function Login() {
 
@@ -39,7 +41,7 @@ export default function Login() {
             JSON.stringify(response.data.results[0].user_name)
           );
 
-          navigate("/Main");
+          navigate("/home");
         } else if (response.status === 404) {
           //   toast.success('error Notification !', {
           //     position: toast.POSITION.TOP_RIGHT
@@ -56,55 +58,45 @@ export default function Login() {
   };
 
   return (
-    <div style={{ backgroundColor: "#698db2" }}>
-      <div className="Auth-form-container">
-        <div className="Auth-form">
-          <div className="Auth-form-content">
-            <h3 className="Auth-form-title" style={{ fontFamily: "initial" }}>
-              Signup Into Account
-            </h3>
+    <div className="login-main black-bg">
+      <div >
+        <img className="header-image" src={home1} alt="Header Image" />
+        <div className="Auth-form-container">
+          <div className="Auth-form">
+            <div className="Auth-form-content">
 
-            <div className="form-group mt-4">
-              <label style={{ fontFamily: "initial", fontSize: 18 }}>
-                Email Address :
-              </label>
-              <input
-                type="email"
-                className="form-control mt-1"
-                placeholder="Enter Email.."
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label style={{ fontFamily: "initial", fontSize: 18 }}>
-                Password :
-              </label>
-              <input
-                type="password"
-                className="form-control mt-1"
-                placeholder="Enter Password.."
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-
-            <div className="d-grid gap-2 mt-3 ">
-              <center>
-                <button
-                  type="submit"
-                  onClick={login}
-                  style={{
-                    backgroundColor: "#698db2",
-                    color: "#fff",
-                    textTransform: "initial",
-                    fontSize: 17,
-                    fontFamily: "initial",
-                    width: 290,
-                  }}
-                  className="btn btn-sm "
-                >
-                  Login
-                </button>
-              </center>
+                <div className="form-group mt-4">
+                  <label style={{ fontFamily: "initial", fontSize: 18 }}>
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control mt-1"
+                    // placeholder="Enter Email.."
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="form-group mt-3">
+                  <label style={{ fontFamily: "initial", fontSize: 18 }}>
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control mt-1"
+                    // placeholder="Enter Password.."
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+              <div className="d-grid gap-2 mt-3 custom-button">
+               
+                  <button
+                    type="submit"
+                    onClick={login}
+                    className="btn btn-sm "
+                  >
+                    Login
+                  </button>
+              </div>
             </div>
           </div>
         </div>

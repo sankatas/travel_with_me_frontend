@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './Home.css'; // Import your CSS file here
+import './Home.css';
 import Header from '../Header/Header';
 import home1 from '../../Assets/home1.jpg';
-import card1Image from '../../Assets/home1.jpg'; // Import your card images accordingly
+import card1Image from '../../Assets/home1.jpg'; 
 import Footer from '../Footer/Footer';
 
 const cardData = [
