@@ -5,12 +5,17 @@ import add from '../../Assets/Add.png';
 import home from '../../Assets/Home.png';
 import account from '../../Assets/Account.png';
 import login from '../../Assets/Login.png';
-import pushNotifications from '../../Assets/Push_Notifications.png';
-import { Link } from 'react-router-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faHome, faUser, faSignInAlt, faBell, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { NavLink, useNavigate } from 'react-router-dom';
+
 
 function Header() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem("userName");
+    navigate('/login');
+  };
   return (
     <div className="App">
       <header className="header">
@@ -19,15 +24,41 @@ function Header() {
         </div>
         <nav>
           <ul className="menu">
-          <li><Link to="/create"><img className="header-menu-icons" src={add} alt="Create" /> Create</Link></li>
-            <li><Link to="/home"><img className="header-menu-icons" src={home} alt="Home" /> Home</Link></li>
-            <li><Link to="/profile"><img className="header-menu-icons" src={account} alt="Profile" /> Profile</Link></li>
-            <li><Link to="/login"><img className="header-menu-icons" src={login} alt="Login" /> Login</Link></li>
-            <li><Link to="/notifications"><img className="header-menu-icons" src={pushNotifications} alt="Notifications" /> Notifications</Link></li>
+            {localStorage.getItem('token') ? (
+              <li>
+                <NavLink to="/create" activeClassName="active">
+                  <img className="header-menu-icons" src={add} alt="Create" /> Create
+                </NavLink>
+              </li>
+            ) : null}
+            <li>
+              <NavLink to="/home" activeClassName="active">
+                <img className="header-menu-icons" src={home} alt="Home" /> Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/profile" activeClassName="active">
+                <img className="header-menu-icons" src={account} alt="Profile" /> Profile
+              </NavLink>
+            </li>
+            {localStorage.getItem('token') ? null : (
+              <li>
+                <NavLink to="/login" activeClassName="active">
+                  <img className="header-menu-icons" src={login} alt="Login" /> Login
+                </NavLink>
+              </li>
+            )}
+            {localStorage.getItem('token') ? (
+              <li>
+                {/* Omitting the "to" attribute to make the link inactive */}
+                <button className="menu-button" onClick={handleLogout}>
+                  <img className="header-menu-icons" src={login} alt="Logout" /> Logout
+                </button>
+              </li>
+            ) : null}
           </ul>
         </nav>
       </header>
-      
     </div>
   );
 }

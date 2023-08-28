@@ -41,47 +41,47 @@ const cardData = [
   // ... other card objects
 ];
 
-const cardData1 = [
-  {
-    content: 'Card 1 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 2 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 3 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 4 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 5 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 6 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 7 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 8 Content',
-    image: card1Image,
-  },
-  // ... other card objects
-];
+// const cardData1 = [
+//   {
+//     content: 'Card 1 Content',
+//     image: card1Image,
+//   },
+//   {
+//     content: 'Card 2 Content',
+//     image: card1Image,
+//   },
+//   {
+//     content: 'Card 3 Content',
+//     image: card1Image,
+//   },
+//   {
+//     content: 'Card 4 Content',
+//     image: card1Image,
+//   },
+//   {
+//     content: 'Card 5 Content',
+//     image: card1Image,
+//   },
+//   {
+//     content: 'Card 6 Content',
+//     image: card1Image,
+//   },
+//   {
+//     content: 'Card 7 Content',
+//     image: card1Image,
+//   },
+//   {
+//     content: 'Card 8 Content',
+//     image: card1Image,
+//   },
+//   // ... other card objects
+// ];
 
 const cardsToShow = 5;
 
 export default function Home() {
   const [startIndex, setStartIndex] = useState(0);
-  const [startIndex1, setStartIndex1] = useState(0);
+  // const [startIndex1, setStartIndex1] = useState(0);
 
   const goToPrevious = () => {
     if (startIndex > 0) {
@@ -94,22 +94,22 @@ export default function Home() {
       setStartIndex(startIndex + 1);
     }
   };
-  const goToPrevious1 = () => {
-    if (startIndex1 > 0) {
-      setStartIndex1(startIndex1 - 1);
-    }
-  };
+  // const goToPrevious1 = () => {
+  //   if (startIndex1 > 0) {
+  //     setStartIndex1(startIndex1 - 1);
+  //   }
+  // };
 
-  const goToNext1 = () => {
-    if (startIndex1 + cardsToShow < cardData1.length) {
-      setStartIndex1(startIndex1 + 1);
-    }
-  };
+  // const goToNext1 = () => {
+  //   if (startIndex1 + cardsToShow < cardData1.length) {
+  //     setStartIndex1(startIndex1 + 1);
+  //   }
+  // };
 
   return (
     <div className="home-container">
       <Header />
-      <img className="header-image" src={home1} alt="Header Image" />
+      <img className="header-image" src={home1} alt="" />
       <div>
         <h2>Explore</h2>
       </div>
@@ -120,7 +120,7 @@ export default function Home() {
         <div className="card-container">
           {cardData.slice(startIndex, startIndex + cardsToShow).map((card, index) => (
             <div key={index} className={`card ${index === 0 ? 'active' : ''}`}>
-              <img src={card.image} alt={`Card ${index + startIndex} Image`} />
+              <img src={card.image} alt={`Card ${index + startIndex} `} />
               {card.content}
             </div>
           ))}
@@ -134,7 +134,7 @@ export default function Home() {
         </button>
       </div>
 
-      <div>
+      {/* <div>
         <h2>Feed</h2>
       </div>
       <div className="card-carousel">
@@ -156,7 +156,7 @@ export default function Home() {
         >
           &gt;
         </button>
-      </div>
+      </div> */}
       <Footer/>
       </div>
   );

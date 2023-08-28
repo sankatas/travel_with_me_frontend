@@ -49,7 +49,7 @@ li {
 /* Styling for the header image */
 .header-image {
   width: 100%;
-  max-height: 400px;
+  max-height: 300px;
 }
 
 /* Styling for the card section */
@@ -84,3 +84,31 @@ li {
   margin-right: 5px;
 }
 
+/* Styling for active menu items */
+.menu .active {
+  font-weight: bold;
+  color: #F1b452;
+  font-size: 20px;
+}
+.inactive {
+  color: gray; /* You can choose the color you prefer */
+  text-decoration: none; /* Remove underline, if any */
+}
+
+/* Styling for the header menu icons */
+.header-menu-icons {
+  width: 20px;
+  height: auto;
+  margin-right: 5px;
+}
+
+/* Styling for navigation menu buttons */
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}

@@ -3,7 +3,8 @@ import { URL } from "../../Utils/Url";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import home1 from '../../Assets/home1.jpg';
-import "./Login.css"
+import "./Login.css";
+import Header from '../Header/Header';
 
 export default function Login() {
 
@@ -59,8 +60,9 @@ export default function Login() {
 
   return (
     <div className="login-main black-bg">
+      <Header />
       <div >
-        <img className="header-image" src={home1} alt="Header Image" />
+        <img className="header-image" src={home1} alt="" />
         <div className="Auth-form-container">
           <div className="Auth-form">
             <div className="Auth-form-content">
