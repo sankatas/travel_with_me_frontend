@@ -4,6 +4,7 @@ import Login from "../Screens/Login/Login"
 import Home from "../Screens/Home/Home";
 import Profile from "../Screens/Profile/Profile";
 import CreateForm from "../Screens/CreateForm/CreateForm";
+import CreateUser from "../Screens/CreateUser/CreateUser";
 
 function RootStack() {
   
@@ -16,6 +17,7 @@ function RootStack() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/create" element={<CreateForm />} />
+          <Route path="/createuser" element={<CreateUser />} />
         </Routes>
       </BrowserRouter>
     </div>

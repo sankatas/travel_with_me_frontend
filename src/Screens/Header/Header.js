@@ -36,11 +36,13 @@ function Header() {
                 <img className="header-menu-icons" src={home} alt="Home" /> Home
               </NavLink>
             </li>
+            {localStorage.getItem('token') ? (
             <li>
               <NavLink to="/profile" activeClassName="active">
                 <img className="header-menu-icons" src={account} alt="Profile" /> Profile
               </NavLink>
             </li>
+             ) : null}
             {localStorage.getItem('token') ? null : (
               <li>
                 <NavLink to="/login" activeClassName="active">
