@@ -1,0 +1,68 @@
+/* ReviewPage.css */
+
+.travel-blog {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #754916; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.travel-blog h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.location {
+  font-size: 18px;
+  color: #ffffff; /* Blue color for the location */
+  margin-bottom: 10px;
+}
+
+.created-by {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.created-date {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.blog-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.reach-date {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.how-stay {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.blog-review {
+  font-size: 16px;
+}
+
+/* Style for the Font Awesome location icon */
+.fa-map-marker {
+  margin-right: 5px;
+  color: #ff0000;
+}
+
+/* Loading message style */
+.loading-message {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Customize other styles as needed */

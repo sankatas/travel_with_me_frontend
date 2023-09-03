@@ -37,10 +37,7 @@ export default function Login() {
           // toast.success("Login Successful");
 
           localStorage.setItem("token", response.data.token);
-          localStorage.setItem(
-            "userName",
-            JSON.stringify(response.data.results[0].user_name)
-          );
+          localStorage.setItem("userName",response.data.results[0].user_name)
 
           navigate("/home");
         } else if (response.status === 404) {

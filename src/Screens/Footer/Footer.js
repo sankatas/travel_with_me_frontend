@@ -9,26 +9,26 @@ const Footer = () => {
                 <div className="footer-section">
                     <h2>Travel With Me</h2>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Press &amp; Resources</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Trust &amp; Safety</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Accessibility Statement</a></li>
+                        <li><a href="/about-us">About Us</a></li>
+                        <li><a href="/press-resources">Press &amp; Resources</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/trust-safety">Trust &amp; Safety</a></li>
+                        <li><a href="/accessibility-statement">Accessibility Statement</a></li>
                     </ul>
                 </div>
                 <div className="footer-section">
                     <h2>Explore</h2>
                     <ul>
-                        <li><a href="#">Write a Review</a></li>
-                        <li><a href="#">Add a Place</a></li>
-                        <li><a href="#">Join</a></li>
-                        <li><a href="#">Traveler's Choice</a></li>
-                        <li><a href="#">GreenLeaders</a></li>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Travel Article</a></li>
+                        <li><a href="/write-a-review">Write a Review</a></li>
+                        <li><a href="/add-a-place">Add a Place</a></li>
+                        <li><a href="/join">Join</a></li>
+                        <li><a href="/travelers-choice">Traveler's Choice</a></li>
+                        <li><a href="/greenleaders">GreenLeaders</a></li>
+                        <li><a href="/help-center">Help Center</a></li>
+                        <li><a href="/travel-article">Travel Article</a></li>
                     </ul>
                 </div>
+
 
                 <div className="footer-section">
                     <h2>Contact Us</h2>
@@ -36,19 +36,19 @@ const Footer = () => {
                     <div className="contact-info">
                         <p>Tel: 123-456-7890</p>
                         <p>Email: info@mysite.com</p>
-                        <p>Book a Consultation: <a href="#">Schedule Here</a></p>
+                        <p>Book a Consultation: <a href="/schedule-here">Schedule Here</a></p>
                     </div>
                     <div className="social-icons">
-                        <a href="#" className="icon">
+                        <a href="/facebook" className="icon">
                             <i className="fab fa-facebook"></i>
                         </a>
-                        <a href="#" className="icon">
+                        <a href="/linkedin" className="icon">
                             <i className="fab fa-linkedin"></i>
                         </a>
-                        <a href="#" className="icon">
+                        <a href="/twitter" className="icon">
                             <i className="fab fa-twitter"></i>
                         </a>
-                        <a href="#" className="icon">
+                        <a href="/instagram" className="icon">
                             <i className="fab fa-instagram"></i>
                         </a>
                     </div>

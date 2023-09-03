@@ -1,87 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
 import Header from '../Header/Header';
 import home1 from '../../Assets/home1.jpg';
-import card1Image from '../../Assets/home1.jpg'; 
 import Footer from '../Footer/Footer';
-
-const cardData = [
-  {
-    content: 'Card 1 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 2 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 3 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 4 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 5 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 6 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 7 Content',
-    image: card1Image,
-  },
-  {
-    content: 'Card 8 Content',
-    image: card1Image,
-  },
-  // ... other card objects
-];
-
-// const cardData1 = [
-//   {
-//     content: 'Card 1 Content',
-//     image: card1Image,
-//   },
-//   {
-//     content: 'Card 2 Content',
-//     image: card1Image,
-//   },
-//   {
-//     content: 'Card 3 Content',
-//     image: card1Image,
-//   },
-//   {
-//     content: 'Card 4 Content',
-//     image: card1Image,
-//   },
-//   {
-//     content: 'Card 5 Content',
-//     image: card1Image,
-//   },
-//   {
-//     content: 'Card 6 Content',
-//     image: card1Image,
-//   },
-//   {
-//     content: 'Card 7 Content',
-//     image: card1Image,
-//   },
-//   {
-//     content: 'Card 8 Content',
-//     image: card1Image,
-//   },
-//   // ... other card objects
-// ];
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const cardsToShow = 5;
 
 export default function Home() {
   const [startIndex, setStartIndex] = useState(0);
-  // const [startIndex1, setStartIndex1] = useState(0);
+  const [cardData, setCardData] = useState([]);
+
+  useEffect(() => {
+    // Fetch card data from the API
+    axios
+      .get('http://localhost:8200/travel_with_me/reviews/getreview')
+      .then((response) => {
+        const fetchedCardData = response.data.data; // Assuming your API response contains 'data' field
+        setCardData(fetchedCardData);
+      })
+      .catch((error) => {
+        console.error('Error fetching card data:', error);
+      });
+  }, []); // Empty dependency array to fetch data only once when the component mounts
 
   const goToPrevious = () => {
     if (startIndex > 0) {
@@ -94,17 +36,6 @@ export default function Home() {
       setStartIndex(startIndex + 1);
     }
   };
-  // const goToPrevious1 = () => {
-  //   if (startIndex1 > 0) {
-  //     setStartIndex1(startIndex1 - 1);
-  //   }
-  // };
-
-  // const goToNext1 = () => {
-  //   if (startIndex1 + cardsToShow < cardData1.length) {
-  //     setStartIndex1(startIndex1 + 1);
-  //   }
-  // };
 
   return (
     <div className="home-container">
@@ -119,9 +50,19 @@ export default function Home() {
         </button>
         <div className="card-container">
           {cardData.slice(startIndex, startIndex + cardsToShow).map((card, index) => (
-            <div key={index} className={`card ${index === 0 ? 'active' : ''}`}>
-              <img src={card.image} alt={`Card ${index + startIndex} `} />
-              {card.content}
+            <div key={index} className="card">
+              {/* Display the image with the determined format */}
+              <img
+                src={card.picture1}
+                alt={`Card ${index + startIndex}`}
+                className="card-image" // Set a class for styling
+              />
+              <h5>
+                <Link to={`/review/${card.id}`} style={{ color: '#f1b452' }}>
+                  {card.title}
+                </Link>
+              </h5>
+              <div>{card.location}</div>
             </div>
           ))}
         </div>
@@ -133,31 +74,7 @@ export default function Home() {
           &gt;
         </button>
       </div>
-
-      {/* <div>
-        <h2>Feed</h2>
-      </div>
-      <div className="card-carousel">
-        <button className="nav-button" onClick={goToPrevious1} disabled={startIndex1 === 0}>
-          &lt;
-        </button>
-        <div className="card-container">
-          {cardData.slice(startIndex1, startIndex1 + cardsToShow).map((card, index) => (
-            <div key={index} className={`card ${index === 0 ? 'active' : ''}`}>
-              <img src={card.image} alt={`Card ${index + startIndex1} Image`} />
-              {card.content}
-            </div>
-          ))}
-        </div>
-        <button
-          className="nav-button"
-          onClick={goToNext1}
-          disabled={startIndex1 + cardsToShow >= cardData1.length}
-        >
-          &gt;
-        </button>
-      </div> */}
-      <Footer/>
-      </div>
+      <Footer />
+    </div>
   );
 }
