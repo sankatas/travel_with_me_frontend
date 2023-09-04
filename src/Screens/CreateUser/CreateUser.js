@@ -3,6 +3,8 @@ import axios from 'axios';
 import './CreateUser.css';
 import { useNavigate } from "react-router-dom";
 import { URL } from "../../Utils/Url";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateUser() {
     const navigate = useNavigate();
@@ -54,13 +56,18 @@ export default function CreateUser() {
                     },
                 })
                 .then((response) => {
+                    toast.success('Review submitted successfully!', {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
                     console.log('Response from server:', response.data);
                     navigate("/home");
-                    // Handle success, e.g., show a success message or redirect
+
                 })
                 .catch((error) => {
+                    toast.success(error.response.data.message, {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
                     console.error('Error:', error);
-                    // Handle errors, e.g., show an error message to the user
                 });
         }
     };

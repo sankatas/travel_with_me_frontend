@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { URL } from "../../Utils/Url";
 import axios from "axios";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import home1 from '../../Assets/home1.jpg';
 import "./Login.css";
 import Header from '../Header/Header';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
 
@@ -34,20 +36,23 @@ export default function Login() {
       .then(function (response) {
         if (response.data.status === 200) {
           // alert("logged successful");
-          // toast.success("Login Successful");
+          toast.success("Login Successful");
 
           localStorage.setItem("token", response.data.token);
-          localStorage.setItem("userName",response.data.results[0].user_name)
+          localStorage.setItem("userName", response.data.results[0].user_name)
 
           navigate("/home");
         } else if (response.status === 404) {
-          //   toast.success('error Notification !', {
-          //     position: toast.POSITION.TOP_RIGHT
-          // });
+          toast.error('Email or Password is incorrect!', {
+            position: toast.POSITION.TOP_RIGHT
+          });
 
-          alert("please enter correct details");
+          // alert("please enter correct details");
         } else {
-          alert("Internal server error!!");
+          toast.error('Email or Password is incorrect!', {
+            position: toast.POSITION.TOP_RIGHT
+          });
+          // alert("Internal server error!!");
         }
       })
       .catch(function (error) {
@@ -97,7 +102,7 @@ export default function Login() {
                 </button>
               </div>
               <div>
-              <Link to="/createuser" className="create-account-link" >Create an account</Link>
+                <Link to="/createuser" className="create-account-link" >Create an account</Link>
               </div>
             </div>
           </div>
