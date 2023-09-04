@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Header from '../Header/Header';
 import './CreateForm.css';
+import { useNavigate } from "react-router-dom";
+import { URL } from "../../Utils/Url";
 
 const CreateForm = () => {
+  const navigate = useNavigate();
   const user = localStorage.getItem('userName');
 
   const [reviewData, setReviewData] = useState({
@@ -36,7 +39,7 @@ const CreateForm = () => {
         const base64String = e.target.result;
         setReviewData({
           ...reviewData,
-          [name]: base64String, // Store the base64 string
+          [name]: base64String,
         });
       };
 
@@ -48,18 +51,16 @@ const CreateForm = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(
-        'http://localhost:8200/travel_with_me/reviews/review', // Replace with your backend URL
-        reviewData, // Send the reviewData object directly as JSON
+      const response = await axios.post(`${URL}/reviews/review`,
+        reviewData,
         {
           headers: {
-            'Content-Type': 'application/json', // Set the content type to JSON
+            'Content-Type': 'application/json',
           },
         }
       );
 
       console.log('Review submitted successfully:', response.data);
-      // Clear the form fields
       setReviewData({
         title: '',
         location: '',
@@ -72,6 +73,7 @@ const CreateForm = () => {
         picture1: null,
         picture2: null,
       });
+      navigate("/profile");
     } catch (error) {
       console.error('Error submitting review:', error);
     }
@@ -90,7 +92,7 @@ const CreateForm = () => {
               name="title"
               value={reviewData.title}
               onChange={handleInputChange}
-              required // Make the 'Title' field required
+              required
             />
           </div>
           <div className="form-row">
@@ -100,7 +102,7 @@ const CreateForm = () => {
               name="location"
               value={reviewData.location}
               onChange={handleInputChange}
-              required // Make the 'Location' field required
+              required
             />
           </div>
           <div className="form-row">
@@ -110,7 +112,7 @@ const CreateForm = () => {
               name="reach_date"
               value={reviewData.reach_date}
               onChange={handleInputChange}
-              required // Make the 'Reach Date' field required
+              required
             />
           </div>
           <div className="form-row">
@@ -119,7 +121,7 @@ const CreateForm = () => {
               name="how_stay"
               value={reviewData.how_stay}
               onChange={handleInputChange}
-              required // Make the 'How Was Your Stay?' field required
+              required
             />
           </div>
           <div className="form-row">
@@ -128,7 +130,7 @@ const CreateForm = () => {
               name="review"
               value={reviewData.review}
               onChange={handleInputChange}
-              required // Make the 'Your Review' field required
+              required
             />
           </div>
           <div className="form-row">
@@ -138,7 +140,7 @@ const CreateForm = () => {
               name="picture1"
               accept="image/*"
               onChange={(event) => handlePhotoUpload(event, 'picture1')}
-              required // Make the 'Photo 1' field required
+              required
             />
             <input
               type="text"
@@ -155,7 +157,7 @@ const CreateForm = () => {
               name="picture2"
               accept="image/*"
               onChange={(event) => handlePhotoUpload(event, 'picture2')}
-              required // Make the 'Photo 2' field required
+              required
             />
             <input
               type="text"

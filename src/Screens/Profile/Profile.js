@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Profile.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import { URL } from "../../Utils/Url"
 import { Link } from 'react-router-dom';
 
 const cardsToShow = 5;
@@ -17,7 +18,7 @@ const Profile = () => {
 
     // Fetch card data from the API when the component mounts
     axios
-      .get(`http://localhost:8200/travel_with_me/reviews/getreviewbyuser/${user}`)
+      .get(`${URL}/reviews/getreviewbyuser/${user}`)
       .then((response) => {
         const fetchedCardData = response.data.data; // Assuming your API response contains 'data' field
         setCardData(fetchedCardData);

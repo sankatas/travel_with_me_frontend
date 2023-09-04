@@ -5,6 +5,7 @@ import home1 from '../../Assets/home1.jpg';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { URL } from "../../Utils/Url";
 
 const cardsToShow = 5;
 
@@ -15,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     // Fetch card data from the API
     axios
-      .get('http://localhost:8200/travel_with_me/reviews/getreview')
+      .get(`${URL}/reviews/getreview`)
       .then((response) => {
         const fetchedCardData = response.data.data; // Assuming your API response contains 'data' field
         setCardData(fetchedCardData);

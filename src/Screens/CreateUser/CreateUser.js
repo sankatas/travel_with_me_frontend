@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './CreateUser.css';
 import { useNavigate } from "react-router-dom";
+import { URL } from "../../Utils/Url";
 
 export default function CreateUser() {
     const navigate = useNavigate();
@@ -47,7 +48,7 @@ export default function CreateUser() {
         e.preventDefault();
         if (validateForm()) {
             axios
-                .post('http://localhost:8200/travel_with_me/autenticate/create', formData, {
+                .post(`${URL}/autenticate/create`, formData, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
