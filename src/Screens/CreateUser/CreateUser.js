@@ -56,7 +56,7 @@ export default function CreateUser() {
                     },
                 })
                 .then((response) => {
-                    toast.success('Review submitted successfully!', {
+                    toast.success('User Created successfully!', {
                         position: toast.POSITION.TOP_RIGHT
                     });
                     console.log('Response from server:', response.data);
