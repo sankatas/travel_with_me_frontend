@@ -58,6 +58,10 @@
     max-width: 100%;
     height: auto;
   } */
+
+  .explore{
+    padding: 10px;
+  }
   
   .card button {
     padding: 8px 16px;
